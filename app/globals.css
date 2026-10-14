@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* Tokens da marca. Cores e fontes vêm daqui, nunca de valores soltos. */
+@theme {
+  --color-brand: #a8213f;
+  --color-brand-deep: #7a1530;
+  --color-ink: #211d1e;
+  --color-muted: #5e5759;
+  --color-paper: #fbf8f6;
+  --color-soft: #f6ecea;
+  --color-line: #e7dcdc;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
