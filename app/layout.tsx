@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     type: 'website',
   },
-  icons: { icon: '/icon.svg' },
+  icons: { icon: `${process.env.BASE_PATH ?? ''}/icon.svg` },
 };
 
 export const viewport: Viewport = {
