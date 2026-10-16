@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BannerCuidar } from '@/components/BannerCuidar';
+import { BannerNovo } from '@/components/BannerNovo';
 import { Cabecalho } from '@/components/Cabecalho';
 import { IconeWhatsApp, Seta } from '@/components/Icones';
 import { Rodape } from '@/components/Rodape';
@@ -220,8 +220,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FAIXA AFETIVA COM ROLAGEM */}
-        <BannerCuidar />
+        {/* FAIXA AFETIVA: LAUDO VIVO */}
+        <BannerNovo />
 
         {/* PLANOS PET PARCEIROS */}
         <section id="planos" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
