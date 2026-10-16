@@ -20,7 +20,7 @@ export default function Eventos() {
     >
       <Cartao className="max-w-3xl">
         <p className="text-lg text-graphite">
-          Não há detalhes de eventos publicados no site atual. Consulte a equipe pelo WhatsApp para saber as datas, os valores e como participar.
+          Não há detalhes de eventos publicados no site atual. Consulte a equipe pelo telefone (71) 99914.2701 para saber as datas, os valores e como participar.
         </p>
       </Cartao>
     </PaginaPrototipo>
