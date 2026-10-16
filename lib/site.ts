@@ -14,7 +14,12 @@ export type Pagina =
   | 'solicitar-exames'
   | 'solicitar-material'
   | 'tabela'
-  | 'cadastre-se';
+  | 'cadastre-se'
+  | 'cadastro-pessoa-juridica'
+  | 'cadastro-pessoa-fisica'
+  | 'eventos-cursos'
+  | 'webinar-registration'
+  | 'normas';
 
 export const NAV_PRINCIPAL: { id: Pagina; href: string; label: string }[] = [
   { id: 'inicio', href: '/', label: 'Início' },
