@@ -11,6 +11,11 @@ export function whatsappComTexto(texto: string): string {
 
 export const EMAIL = 'contato@laboratest.com.br';
 export const INSTAGRAM_URL = 'https://www.instagram.com/laboratest_vet/';
+// Funções do site atual que as clínicas usam (páginas do próprio laboratório).
+export const RESULTADOS_URL = 'https://www.laboratest.com.br/resultados';
+export const SOLICITAR_EXAMES_URL = 'https://www.laboratest.com.br/solicitar-exames';
+export const SOLICITAR_MATERIAL_URL = 'https://www.laboratest.com.br/solicitar-material';
+
 export const TABELA_SERVICOS_URL =
   'https://www.laboratest.com.br/_files/ugd/21bda8_5c827e356f224e0788066aae04a8d127.pdf';
 

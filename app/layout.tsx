@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'LaboraTEST | Diagnóstico veterinário em Salvador e região',
   description:
-    'Laboratório veterinário em Salvador, BA. Hematologia, bioquímica, citologia e histopatologia, com revisão técnica e laudos interpretativos para clínicas e tutores.',
+    'Centro de diagnóstico veterinário em Salvador, BA. Hematologia, bioquímica, citologia, parasitologia e microbiologia, com coleta em Salvador e região.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'LaboraTEST | Diagnóstico veterinário em Salvador e região',
-    description: 'Monte a coleta certa para o seu caso e fale com a equipe técnica pelo WhatsApp.',
+    description: 'Diagnóstico veterinário com precisão, agilidade e responsabilidade técnica. Solicite exames, material e acesse resultados.',
     url: SITE_URL,
     siteName: 'LaboraTEST',
     locale: 'pt_BR',
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Rozha+One&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Nunito+Sans:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
       </head>
       <body>
         <a

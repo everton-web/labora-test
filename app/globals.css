@@ -1,50 +1,298 @@
 @import "tailwindcss";
 
-/* Tokens da marca. Cores e fontes vêm daqui, nunca de valores soltos. */
+/* Tokens da marca (docs/design-system/laboratest.md). Cores e fontes vêm daqui, nunca de valores soltos. */
 @theme {
   --color-brand: #c72a4a;
   --color-brand-deep: #a8213f;
-  --color-brand-light: #e13a44;
-  --color-navy: #2b5672;
+  --color-graphite: #4c4c4c;
   --color-ink: #303030;
   --color-muted: #606060;
-  --color-subtle: #8f8f8f;
   --color-paper: #ffffff;
-  --color-soft: #f6ecec;
-  --color-line: #e7dcdc;
+  --color-soft: #f7eef0;
+  --color-line: #e8dfe1;
 
   --font-sans: "Nunito Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --font-display: "Rozha One", "Iowan Old Style", Georgia, serif;
+  --font-display: "Nunito", "Nunito Sans", ui-rounded, ui-sans-serif, system-ui, sans-serif;
+  /* Só para a palavra "cuidar" da faixa afetiva, que no banner original é cursiva. */
+  --font-script: "Dancing Script", "Brush Script MT", cursive;
 }
 
 :root {
   color-scheme: light;
 }
 
-body {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
-h1,
-h2,
-h3 {
+/* Base em @layer base para que as classes utilitárias do Tailwind possam sobrescrever. */
+@layer base {
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.0625rem;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--color-graphite);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+}
+
+/* Faixa afetiva com rolagem (components/BannerCuidar.tsx).
+   --p vai de 0 a 1 conforme a rolagem; o padrão 1 é o estado final (sem JS ou movimento reduzido).
+   Cada --aN é o avanço de um elemento, numa janela própria de --p.
+   Contraste: o texto branco fica só sobre o degradê, que nunca é mais claro que brand (5,4:1, AA). */
+.cuidar {
+  --p: 1;
+  --a1: clamp(0, calc((var(--p) - 0.02) / 0.18), 1);
+  --a2: clamp(0, calc((var(--p) - 0.16) / 0.2), 1);
+  --a3: clamp(0, calc((var(--p) - 0.34) / 0.16), 1);
+  --a4: clamp(0, calc((var(--p) - 0.44) / 0.16), 1);
+  --a5: clamp(0, calc((var(--p) - 0.6) / 0.16), 1);
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  background: var(--color-brand-deep);
+}
+
+.cuidar[data-anim] {
+  height: 180vh;
+  height: 180svh;
+}
+
+.cuidar__palco {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: calc(4.5rem + 9svh) 1rem 0;
+  background: linear-gradient(120deg, var(--color-brand) 0%, var(--color-brand) 30%, var(--color-brand-deep) 100%);
+}
+
+/* Segunda camada do degradê: escurece e puxa para o grafite conforme a rolagem. */
+.cuidar__tom {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, var(--color-brand-deep) 0%, var(--color-brand-deep) 45%, var(--color-graphite) 100%);
+  opacity: calc(var(--p) * 0.6);
+}
+
+.cuidar__foto {
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+  width: 62%;
+  height: 52%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.cuidar__foto--esq {
+  left: 0;
+  object-position: 70% 50%;
+  -webkit-mask-image: linear-gradient(to top, #000 55%, transparent), linear-gradient(to right, #000 60%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to top, #000 55%, transparent), linear-gradient(to right, #000 60%, transparent);
+  mask-composite: intersect;
+  transform: translate3d(calc((1 - var(--p)) * -6vw), calc((var(--p) - 0.5) * -6svh), 0) scale(1.16);
+}
+
+.cuidar__foto--dir {
+  right: 0;
+  z-index: 1;
+  object-position: 20% 50%;
+  -webkit-mask-image: linear-gradient(to top, #000 55%, transparent), linear-gradient(to left, #000 75%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to top, #000 55%, transparent), linear-gradient(to left, #000 75%, transparent);
+  mask-composite: intersect;
+  transform: translate3d(calc((1 - var(--p)) * 6vw), calc((var(--p) - 0.5) * 6svh), 0) scale(1.16);
+}
+
+.cuidar__texto {
+  position: relative;
+  z-index: 2;
+  max-width: 44rem;
+  text-align: center;
+  color: #fff;
+}
+
+.cuidar__titulo {
+  color: #fff;
+  font-size: clamp(2.5rem, 12.5vw, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
-p,
-li {
-  text-wrap: pretty;
+.cuidar__linha1,
+.cuidar__linha2 {
+  display: block;
 }
 
-:focus-visible {
-  outline: 3px solid var(--color-brand);
-  outline-offset: 3px;
+.cuidar__onde,
+.cuidar__script,
+.cuidar__w1,
+.cuidar__w2 {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.cuidar__onde {
+  font-size: 0.5em;
+  vertical-align: 0.35em;
+  opacity: var(--a1);
+  transform: translateX(calc((1 - var(--a1)) * -45vw));
+}
+
+.cuidar__script {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.12em;
+  letter-spacing: 0;
+  opacity: var(--a2);
+  transform: scale(calc(0.35 + 0.65 * var(--a2))) rotate(calc((1 - var(--a2)) * -8deg));
+  transform-origin: 30% 60%;
+}
+
+.cuidar__w1 {
+  opacity: var(--a3);
+  transform: translateY(calc((1 - var(--a3)) * 0.9em));
+}
+
+.cuidar__w2 {
+  opacity: var(--a4);
+  transform: translateY(calc((1 - var(--a4)) * 0.9em));
+}
+
+.cuidar__apoio {
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  opacity: var(--a5);
+  transform: translateY(calc((1 - var(--a5)) * 1.5rem));
+}
+
+@media (min-width: 768px) {
+  .cuidar__palco {
+    justify-content: center;
+    padding-top: 5rem;
+  }
+
+  .cuidar__foto {
+    top: 0;
+    width: 34%;
+    height: 100%;
+  }
+
+  .cuidar__foto--esq {
+    -webkit-mask-image: linear-gradient(to right, #000 35%, transparent 88%);
+    -webkit-mask-composite: source-over;
+    mask-image: linear-gradient(to right, #000 35%, transparent 88%);
+    mask-composite: add;
+  }
+
+  .cuidar__foto--dir {
+    -webkit-mask-image: linear-gradient(to left, #000 40%, transparent 90%);
+    -webkit-mask-composite: source-over;
+    mask-image: linear-gradient(to left, #000 40%, transparent 90%);
+    mask-composite: add;
+  }
+
+  .cuidar__titulo {
+    font-size: clamp(3.5rem, 6.4vw, 6rem);
+  }
+
+  .cuidar__apoio {
+    font-size: 1.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .cuidar {
+    --p: 1 !important;
+    height: 100svh !important;
+  }
+}
+
+/* Faixa que avisa que a página é um protótipo. */
+.aviso-prototipo {
+  background: var(--color-soft);
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-graphite);
+}
+
+/* Campos dos formulários-protótipo. */
+.campo {
+  display: block;
+  width: 100%;
+  border: 1.5px solid var(--color-line);
+  border-radius: 0.75rem;
+  background: var(--color-paper);
+  padding: 0.7rem 0.9rem;
+  color: var(--color-ink);
+  font: inherit;
+}
+
+.campo:hover {
+  border-color: var(--color-muted);
+}
+
+.campo:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 1px;
+  border-color: var(--color-brand);
+}
+
+.marca {
+  accent-color: var(--color-brand);
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+/* Menu mobile: esconde o marcador padrão do <summary>. */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
