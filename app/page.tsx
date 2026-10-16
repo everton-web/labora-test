@@ -116,21 +116,21 @@ export default function Home() {
             <svg viewBox="0 0 320 300" className="h-auto w-full" role="presentation">
               <rect x="20" y="236" width="280" height="20" rx="10" fill="#e7dcdc" />
               <g>
-                <rect x="72" y="60" width="44" height="190" rx="22" fill="#fff" stroke="#7a1530" strokeWidth="3" />
-                <rect x="72" y="60" width="44" height="46" rx="18" fill="#7a1530" />
-                <rect x="72" y="150" width="44" height="100" rx="0" fill="#a8213f" opacity="0.85" />
+                <rect x="72" y="60" width="44" height="190" rx="22" fill="#fff" stroke="#c72a4a" strokeWidth="3" />
+                <rect x="72" y="60" width="44" height="46" rx="18" fill="#c72a4a" />
+                <rect x="72" y="150" width="44" height="100" rx="0" fill="#c72a4a" opacity="0.85" />
               </g>
               <g>
-                <rect x="138" y="36" width="44" height="214" rx="22" fill="#fff" stroke="#211d1e" strokeWidth="3" />
-                <rect x="138" y="36" width="44" height="46" rx="18" fill="#211d1e" />
-                <rect x="138" y="128" width="44" height="122" rx="0" fill="#e8a7b5" />
+                <rect x="138" y="36" width="44" height="214" rx="22" fill="#fff" stroke="#303030" strokeWidth="3" />
+                <rect x="138" y="36" width="44" height="46" rx="18" fill="#303030" />
+                <rect x="138" y="128" width="44" height="122" rx="0" fill="#f6ecec" />
               </g>
               <g>
-                <rect x="204" y="76" width="44" height="174" rx="22" fill="#fff" stroke="#7a1530" strokeWidth="3" />
-                <rect x="204" y="76" width="44" height="46" rx="18" fill="#a8213f" />
-                <rect x="204" y="170" width="44" height="80" rx="0" fill="#5e5759" opacity="0.6" />
+                <rect x="204" y="76" width="44" height="174" rx="22" fill="#fff" stroke="#c72a4a" strokeWidth="3" />
+                <rect x="204" y="76" width="44" height="46" rx="18" fill="#c72a4a" />
+                <rect x="204" y="170" width="44" height="80" rx="0" fill="#606060" opacity="0.6" />
               </g>
-              <text x="160" y="278" textAnchor="middle" fontSize="13" fill="#5e5759" fontFamily="inherit">
+              <text x="160" y="278" textAnchor="middle" fontSize="13" fill="#606060" fontFamily="inherit">
                 Painel de coleta, uma amostra por exame
               </text>
             </svg>
@@ -210,7 +210,7 @@ export default function Home() {
         <section id="para-quem" className="bg-white py-16 sm:py-20">
           <div className="mx-auto grid max-w-6xl gap-6 px-4 sm:px-6 md:grid-cols-2">
             <article className="rounded-2xl bg-ink p-8 text-white sm:p-10">
-              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#f0b7c4]">Para clínicas e hospitais</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#ffffff]">Para clínicas e hospitais</p>
               <h2 className="mt-3 font-display text-3xl font-bold">Parceria técnica, não só entrega de laudo.</h2>
               <ul className="mt-6 space-y-3 text-white/85">
                 <li>Suporte técnico para interpretar o resultado com o clínico.</li>
@@ -288,7 +288,7 @@ export default function Home() {
       <footer className="bg-ink py-8 text-sm text-white/70">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 sm:px-6">
           <p className="font-display text-lg font-bold text-white">
-            labora<span className="text-[#f0b7c4]">TEST</span>
+            labora<span className="text-[#ffffff]">TEST</span>
           </p>
           <p>© 2021 a 2026 LaboraTEST, Centro de Diagnóstico Veterinário. Todos os direitos reservados.</p>
         </div>
